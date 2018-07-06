@@ -33,7 +33,7 @@ class Shape {
 class Square extends Shape {
 
 	public Square() {
-		super();
+		super();		//Using super keyword to access superclass' constructor
 	}
 	
 	
@@ -45,7 +45,7 @@ class Circle extends Shape {
 	
 	public Circle(double r) {
 		super();
-		this.radius = r;
+		this.radius = r;		//Using this keyword to refer to the current object
 	}
 	
 	public void getPerimeter() {
@@ -60,7 +60,7 @@ class Circle extends Shape {
 }
 
 class mainClass {
-	public static void main(String[] args)throws IOException {
+	public static void main(String[] args)throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("Enter the radius of the circle as a decimal.");
 		double r = Double.parseDouble(br.readLine());
@@ -70,6 +70,12 @@ class mainClass {
 		square.getArea();
 		circle.getPerimeter();		//Demonstrates method overriding
 		circle.getArea();		//Demonstrates method overriding
+		throw new ShapeNotFoundException("The shape does not exist.");		//Demonstrating custom Exception
 	}
 }
 
+class ShapeNotFoundException extends Exception {
+	public ShapeNotFoundException(String message) {
+		super(message);
+	}
+}
