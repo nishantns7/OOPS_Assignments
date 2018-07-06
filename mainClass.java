@@ -13,7 +13,7 @@ class Shape {
 	
 	public void getPerimeter(double r) {		//Demonstrates method overloading
 		double peri = 2.0 * Math.PI * r;
-		System.out.println("Perimeter of circle: " + peri);
+		System.out.println("Perimeter of circle from superclass: " + peri);
 	}
 
 	public void getPerimeter() {		//Demonstrates method overloading
@@ -23,7 +23,7 @@ class Shape {
 	
 	public void getArea(double r) {
 		double area = Math.PI * r * r;
-		System.out.println("Area of circle: " + area);
+		System.out.println("Area of circle from superclass: " + area);
 	}
 	
 	public void getArea() {
