@@ -49,12 +49,12 @@ class Circle extends Shape {
 		this.radius = r;		//Using this keyword to refer to the current object
 	}
 	
-	public void getPerimeter() {
+	public void getPerimeter(double radius) {
 		double peri = 2.0 * Math.PI * radius;
 		System.out.println("Output from subclass' getPerimeter: " + peri);
 	}
 	
-	public void getArea() {
+	public void getArea(double radius) {
 		double area = Math.PI * radius * radius;
 		System.out.println("Output from subclass' getPerimeter: " + area);
 	}
@@ -74,9 +74,11 @@ class mainClass {
 		Shape circle = new Circle(r);
 		square.getPerimeter();
 		square.getArea();
-		circle.getPerimeter();		//Demonstrates method overriding and dynamic binding
-		circle.getArea();	//Even though the superclass reference is used during object creation, the subclass method is called
+		circle.getPerimeter(r);		//Demonstrates method overriding and dynamic binding
+		circle.getArea(r);	//Even though the superclass reference is used during object creation, the subclass method is called
 //		Shape.test();		//Gives error: "error: test() has private access in Shape"
+		Shape newShape = (Shape) circle;
+		newShape.getPerimeter(r);
 		mainClass obj = new mainClass();
 		System.out.println(obj.getClass());		//Cannot be overridden because it's a final method
 		System.out.println(obj.toString());		//Overridden by the method defined within this class
