@@ -77,7 +77,7 @@ class mainClass {
 		circle.getPerimeter(r);		//Demonstrates method overriding and dynamic binding
 		circle.getArea(r);	//Even though the superclass reference is used during object creation, the subclass method is called
 //		Shape.test();		//Gives error: "error: test() has private access in Shape"
-		Shape newShape = (Shape) circle;
+		Shape newShape = (Shape) circle;		//Upcasting
 		newShape.getPerimeter(r);
 		mainClass obj = new mainClass();
 		System.out.println(obj.getClass());		//Cannot be overridden because it's a final method
