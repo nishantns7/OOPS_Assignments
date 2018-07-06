@@ -2,6 +2,9 @@ import java.io.*;
 class Shape {
 	
 	int width, height;
+	private void test() {
+		System.out.println("mainClass has access to this method");
+	}
 	
 	public Shape() {
 		width = 3;
@@ -35,8 +38,6 @@ class Square extends Shape {
 	public Square() {
 		super();		//Using super keyword to access superclass' constructor
 	}
-	
-	
 }
 
 class Circle extends Shape {
@@ -70,11 +71,12 @@ class mainClass {
 		System.out.println("Enter the radius of the circle as a decimal.");
 		double r = Double.parseDouble(br.readLine());
 		Square square = new Square();
-		Circle circle = new Circle(r);
+		Shape circle = new Circle(r);
 		square.getPerimeter();
 		square.getArea();
-		circle.getPerimeter();		//Demonstrates method overriding
-		circle.getArea();		//Demonstrates method overriding
+		circle.getPerimeter();		//Demonstrates method overriding and dynamic binding
+		circle.getArea();	//Even though the superclass reference is used during object creation, the subclass method is called
+//		Shape.test();		//Gives error: "error: test() has private access in Shape"
 		mainClass obj = new mainClass();
 		System.out.println(obj.getClass());		//Cannot be overridden because it's a final method
 		System.out.println(obj.toString());		//Overridden by the method defined within this class
