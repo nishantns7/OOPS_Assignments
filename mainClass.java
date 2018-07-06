@@ -60,6 +60,11 @@ class Circle extends Shape {
 }
 
 class mainClass {
+	
+	public String toString() {
+		return "This was printed because the Object class' method was overriden by this method.";
+	}
+	
 	public static void main(String[] args)throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("Enter the radius of the circle as a decimal.");
@@ -70,12 +75,53 @@ class mainClass {
 		square.getArea();
 		circle.getPerimeter();		//Demonstrates method overriding
 		circle.getArea();		//Demonstrates method overriding
+		mainClass obj = new mainClass();
+		System.out.println(obj.getClass());		//Cannot be overridden because it's a final method
+		System.out.println(obj.toString());		//Overridden by the method defined within this class
 		throw new ShapeNotFoundException("The shape does not exist.");		//Demonstrating custom Exception
 	}
+	
+	
 }
 
 class ShapeNotFoundException extends Exception {
 	public ShapeNotFoundException(String message) {
 		super(message);
+	}
+}
+
+abstract class LivingBeing {
+	abstract void isMarine();
+	abstract void isTerrestrial();
+}
+
+interface Human {
+	void setAge();
+}
+
+interface Employee {
+	void setCode();
+}
+
+class ZEmployee implements Human, Employee {
+
+	int age, code;
+	
+	public void setAge() {
+		age = 22;
+	}
+	
+	public void setCode() {
+		code = 00143;
+	}
+}
+
+class ZemosoEmployee extends LivingBeing {
+	public void isTerrestrial() {
+		System.out.println("Zemoso Employees are terrestrial");
+	}
+	
+	public void isMarine() {
+		System.out.println("Zemoso Employees are not marine");
 	}
 }
